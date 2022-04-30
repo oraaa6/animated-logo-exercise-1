@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Documents</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;700&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="search-logo">
+            <div class="loader">
+                <span class="loader__dot loader__dot--first"></span>
+                <span class="loader__dot loader__dot--second"></span>
+                <span class="loader__dot loader__dot--third"></span>
+                <span class="loader__dot loader__dot--fourth"></span>
+            </div>
+            <svg xmlns="//www.w3.org/2000/svg" version="1.1" class="svg-filters" style="position:absolute; height:0">
+                <defs>
+                  <filter id="marker-shape">
+                    <feTurbulence type="fractalNoise" baseFrequency="0 0.15" numOctaves="1" result="warp" />
+                    <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="30" in="SourceGraphic" in2="warp" />
+                  </filter>
+                </defs>
+              </svg>
+            <h1 class="search-logo__text">search<span class="search-logo__text--highlighted">Docs.</span></h1>
+        </div>
+        <form class="form" action="">
+            <input class="form__input" type="text" placeholder = "name of the document">
+            <div class="form__button button">
+                <svg id="stroke" xmlns="http://www.w3.org/2000/svg" width="0" height="0">
+                    <defs>
+                        <path id="line" d="M2 2c49.7 2.6 100 3.1 150 1.7-46.5 2-93 4.4-139.2 7.3 45.2-1.5 90.6-1.8 135.8-.6" fill="none" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+                    </defs>
+                </svg>
+                <a class="button__search" href="#">search.
+                    <svg class="button__stroke" viewBox="0 0 154 13">
+                        <use href="#line"></use>
+                    </svg>
+                    <svg class="button__stroke" viewBox="0 0 154 13">
+                        <use href="#line"></use>
+                    </svg>
+                </a>
+                <a class="button__search" href="#">back.
+                    <svg class="button__stroke" viewBox="0 0 154 13">
+                        <use href="#line"></use>
+                    </svg>
+                    <svg class="button__stroke" viewBox="0 0 154 13">
+                        <use href="#line"></use>
+                    </svg>
+                </a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

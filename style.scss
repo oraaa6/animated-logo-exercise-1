@@ -1,0 +1,183 @@
+// variables
+$animationLength: 1.8s;
+$animationRadius: 15px;
+$dotSize: 10px;
+
+
+// animations dots
+@keyframes animateDot1 {
+    0%{ transform: rotate(0deg) translateX(-$animationRadius); }
+    25% { transform: rotate(180deg) translateX(-$animationRadius); }
+    75% { transform: rotate(180deg) translateX(-$animationRadius); }
+    100% { transform: rotate(360deg) translateX(-$animationRadius); }
+}
+
+@keyframes animateDot2 {
+    0%{ transform: rotate(-0deg) translateX(-$animationRadius); }
+    25% { transform: rotate(-180deg) translateX(-$animationRadius); }
+    75% { transform: rotate(-180deg) translateX(-$animationRadius); }
+    100% { transform: rotate(-360deg) translateX(-$animationRadius); }
+}
+
+@keyframes animateDot3 {
+    0%{ transform: rotate(0deg) translateX($animationRadius); }
+    25% { transform: rotate(180deg) translateX($animationRadius); }
+    75% { transform: rotate(180deg) translateX($animationRadius); }
+    100% { transform: rotate(360deg) translateX($animationRadius); }
+}
+
+@keyframes animateDot4 {
+    0%{ transform: rotate(-0deg) translateX($animationRadius); }
+    25% { transform: rotate(-180deg) translateX($animationRadius); }
+    75% { transform: rotate(-180deg) translateX($animationRadius); }
+    100% { transform: rotate(-360deg) translateX($animationRadius); }
+}
+
+// rest of code
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+.loader { 
+    position: relative; 
+    width: $animationRadius * 3 + $dotSize;
+    height: $dotSize; 
+    &__dot {
+        position: absolute;
+        display: inline-block;
+        width: $dotSize;
+        height: $dotSize;
+        border-radius: $dotSize * 0.5;
+        background: rgb(217, 221, 211);
+    }
+    &__dot--first {
+        left: $animationRadius;
+        animation: animateDot1 $animationLength linear infinite;
+        background: #eaf940; 
+    }
+    &__dot--second {
+        left: $animationRadius * 2;
+        animation: animateDot2 $animationLength linear infinite;
+        animation-delay: $animationLength / 3;
+    }
+    &__dot--third {
+        left: $animationRadius;
+        animation: animateDot3 $animationLength linear infinite;
+    }
+    &__dot--fourth {
+        left: $animationRadius * 2;
+        animation: animateDot4 $animationLength linear infinite;
+        animation-delay: $animationLength / 3;
+    }
+}
+
+.search-logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    &__text {
+        font-size: 9vw;
+        font-weight: 300;
+    }
+    &__text--highlighted {
+        position:relative;
+        font-weight: 700;
+    }
+    &__text--highlighted:before {
+        position:absolute;
+        z-index:-1;
+        left:-0.25em;
+        top:0.1em;
+        width:100%;
+        height:0.9em;
+        padding:0 0.25em;
+        content:"";
+        background-color:#eaf940;
+        filter:url(#marker-shape);
+    }
+}
+
+@media (min-width: 300px ) {
+    .search-logo__text {
+            font-size: 32px;
+    }
+}
+
+.form {
+    &__input {
+    display: block;
+    width: 80vw;
+    height: 25px;
+    max-width: 500px;
+    min-width: 180px;
+    margin: 20px auto 0 auto;
+    border: 1px solid rgb(217, 221, 211);
+    border-radius: 5px;
+    text-align: center;
+    }
+    &__input::placeholder {
+        font-family: 'Inter', sans-serif;
+        letter-spacing: 1px;
+        }
+    &__input:focus {
+        outline: none;
+        border: 1px solid #737470;
+    }
+}
+
+.button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+    &__search {
+        position: relative;
+        display: inline-block;
+        padding: 40px 20px;
+        width: 30%;
+        padding-bottom: 10px;
+        border: none;
+        background-color: transparent;
+        font-size: 20px;
+        font-weight: 300;
+        text-align: center;
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+        &:hover {
+            .button__stroke:nth-child(2) {
+                stroke-dashoffset: 0;
+            }
+        }
+    }
+    &__stroke {
+        position: absolute;
+        display: block;
+        left: 20px;
+        bottom: -10px;
+        width: calc(100% - 40px);
+        height: 20px;
+        stroke: rgb(255, 255, 255);
+        stroke-width: 2;
+        &:nth-child(2) {
+            stroke-dasharray: 650px;
+            stroke-dashoffset: 650px;
+            stroke: darken(#eaf940, 10%);
+            stroke-width: 3;
+            transition: stroke-dashoffset 800ms ease-out;
+        }
+    }
+}
+
